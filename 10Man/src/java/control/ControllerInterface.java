@@ -13,6 +13,7 @@ public interface ControllerInterface {
     public Match getMatch(int matchId);
     
     public PlayerOverview getPlayerOverview(int matchId);
+    public PlayerOverview getPlayersAvailable(int matchId);
     public Player getPlayer(int playerId);
     
     
