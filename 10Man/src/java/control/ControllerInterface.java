@@ -7,9 +7,7 @@ import entity.Player;
 import entity.PlayerOverview;
 
 
-/*
-Forsvind
-*/
+
 public interface ControllerInterface {
     public HistoryOverview getHistoryOverview(int matchId);
     
