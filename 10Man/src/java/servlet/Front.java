@@ -1,6 +1,8 @@
 
 package servlet;
 
+import control.Controller;
+import exception.GeneralException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,31 +13,35 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet(name = "Front", urlPatterns = {"/Front"})
-public class Front extends HttpServlet {
+public class Front extends HttpServlet 
+{
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    Controller control;
+    ServletHandler handler;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException 
+    {
+        //Preparation
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Front</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Front at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        handler = new ServletHandler(request, response);
+        try
+        {
+            this.control = new Controller();
+        }
+        catch(GeneralException ge)
+        {
+            handler.alertError(ge.getMessage());
+        }
+        
+        String method = request.getParameter("method");
+        switch(method)
+        {
+            case "bingo":
+            {
+                System.out.println("tro på det");
+                break;
+            }
         }
     }
 

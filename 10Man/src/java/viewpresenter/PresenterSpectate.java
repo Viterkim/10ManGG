@@ -2,6 +2,7 @@
 package viewpresenter;
 
 
-public class PresenterSpectate {
+public class PresenterSpectate 
+{
     
 }

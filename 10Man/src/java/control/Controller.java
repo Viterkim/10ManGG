@@ -5,50 +5,60 @@ import entity.HistoryOverview;
 import entity.Match;
 import entity.Player;
 import entity.PlayerOverview;
+import exception.GeneralException;
 import model.HistoryMapper;
 import model.MatchMapper;
 import model.PlayerMapper;
 
 
-public class Controller implements ControllerInterface{
+public class Controller
+{
     HistoryMapper hm;
     MatchMapper mm;
     PlayerMapper pm;
 
+    public Controller() throws GeneralException
+    {
+        this.hm = new HistoryMapper();
+        this.mm = new MatchMapper();
+        this.pm = new PlayerMapper();
+    }
+    
     public Controller(HistoryMapper hm, MatchMapper mm, PlayerMapper pm) {
         this.hm = hm;
         this.mm = mm;
         this.pm = pm;
     }
 
-    @Override
-    public HistoryOverview getHistoryOverview(int matchId) {
+    public HistoryOverview getHistoryOverview(int matchId) 
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public Match getMatch(int matchId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Match getMatch(int matchId) throws GeneralException
+    {
+        return mm.getMatch(matchId);
     }
 
-    @Override
-    public PlayerOverview getPlayerOverview(int matchId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public PlayerOverview getPlayerOverview(int matchId) throws GeneralException
+    {
+        return pm.getPlayerOverview(matchId);
     }
 
-    @Override
-    public Player getPlayer(int playerId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Player getPlayer(int playerId) throws GeneralException
+    {
+        return pm.getPlayer(playerId);
     }
 
-    @Override
-    public PlayerOverview getPlayersAvailable(int matchId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public PlayerOverview getPlayersAvailable(int matchId) throws GeneralException
+    {
+        return pm.getPlayerOverview(matchId).getAvailablePlayers();
     }
 
-    @Override
-    public boolean isMatchDone() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isEveryoneOnATeam(int matchId) throws GeneralException
+    {
+        PlayerOverview players = getPlayerOverview(matchId);
+        return players.isEveryoneOnATeam();
     }
     
 }

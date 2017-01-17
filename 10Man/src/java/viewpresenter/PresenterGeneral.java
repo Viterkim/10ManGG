@@ -2,6 +2,7 @@
 package viewpresenter;
 
 
-public class PresenterGeneral {
+public class PresenterGeneral 
+{
     
 }
