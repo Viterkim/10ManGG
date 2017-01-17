@@ -45,5 +45,10 @@ public class Controller implements ControllerInterface{
     public PlayerOverview getPlayersAvailable(int matchId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean isMatchDone() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
