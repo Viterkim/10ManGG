@@ -13,6 +13,9 @@ public interface ControllerInterface {
     
     public Match getMatch(int matchId);
     public boolean isMatchDone();
+    /*
+    Bingomanden 2
+    */
     
     public PlayerOverview getPlayerOverview(int matchId);
     public PlayerOverview getPlayersAvailable(int matchId);
