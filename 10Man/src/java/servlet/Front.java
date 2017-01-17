@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Front extends HttpServlet 
 {
 
-    Controller control;
     ServletHandler handler;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -25,22 +24,19 @@ public class Front extends HttpServlet
         //Preparation
         response.setContentType("text/html;charset=UTF-8");
         handler = new ServletHandler(request, response);
-        try
-        {
-            this.control = new Controller();
-        }
-        catch(GeneralException ge)
-        {
-            handler.alertError(ge.getMessage());
-        }
         
         String method = request.getParameter("method");
         switch(method)
         {
-            case "bingo":
+            case "createMatch":
             {
-                System.out.println("tro på det");
+                handler.getPlayerOverviewFromTextArea();
+//                response.sendRedirect("index.jsp");
                 break;
+            }
+            case "test":
+            {   
+                
             }
         }
     }

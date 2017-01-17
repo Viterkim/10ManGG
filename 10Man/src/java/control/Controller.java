@@ -45,6 +45,11 @@ public class Controller
         return pm.getPlayerOverview(matchId);
     }
 
+    public Player addPlayer(String name, int matchId) throws GeneralException
+    {
+        return pm.addPlayer(name, matchId);
+    }
+    
     public Player getPlayer(int playerId) throws GeneralException
     {
         return pm.getPlayer(playerId);
